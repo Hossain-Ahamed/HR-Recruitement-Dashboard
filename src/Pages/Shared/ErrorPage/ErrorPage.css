@@ -1,0 +1,11 @@
+.bg-error-image{
+    background-image: url('../../../assets/images/not\ found\ think.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    
+   }
+   @media (max-width: 768px) {
+       .bg-error-image {
+           background-position: bottom; /* Center the background image on mobile */
+       }
+   }

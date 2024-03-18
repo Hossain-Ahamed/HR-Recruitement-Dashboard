@@ -1,0 +1,43 @@
+
+
+
+ /* Disable scrolling on number input */
+ input[type="number"]::-webkit-inner-spin-button,
+ input[type="number"]::-webkit-outer-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+
+ input[type="number"] {
+     -moz-appearance: textfield; /* Firefox */
+ }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* custom-scrollbar.css */
+
+/* Set the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Customize the thumb (scrollbar handle) */
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 3px;
+}
+
+/* Customize the track (scrollbar background) */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
