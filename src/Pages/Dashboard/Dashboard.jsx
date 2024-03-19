@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts'
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 const Dashboard = () => {
 
     const axiosSecure = useAxiosSecure();
@@ -107,21 +108,25 @@ const Dashboard = () => {
         <div className='mt-12'>
             <div className='grid justify-items-center pl-20'>
             <h3 className='text-2xl font-semibold text-black'>Welcome back <span className=' uppercase'>xtz</span></h3>
-            <button className='bg-[#11998E] font-medium text-xs text-white px-10 py-3 rounded-md mt-6'>+ Create New Job</button>
+            <Link to="/jobs/create" className='bg-[#11998E] font-medium text-xs text-white px-10 py-3 rounded-md mt-6'>+ Create New Job</Link>
             </div>
             <div className='pt-16 pl-6'>
             <p className='font-mediumm text-xs text-black'>Recent Added Jobs</p>
             <div>
             {jobApplicantCounts?.map(jobApplicantCount => (
-                    <div key={jobApplicantCount?.role} jobApplicantCount={jobApplicantCount} className='flex bg-[#B9F2E5] gap-6 my-4 rounded-md px-2 items-center'>
+                <Link to={`/jobs/details/${jobApplicantCount?.role}`} key={jobApplicantCount?.role}>
+                    <div  jobApplicantCount={jobApplicantCount} className='flex bg-[#B9F2E5] gap-6 my-4 rounded-md px-2 items-center'>
                         <p className='bg-[#11998E] m-2 px-4 py-2 rounded-sm text-white'>{jobApplicantCount?.totalApplicants}</p>
                         <div>
                         <p className='text-sm font-medium text-black'>{jobApplicantCount?.position}</p>
                         <p className='text-xs font-light'>Total Applicantion</p>
                         </div>
                     </div>
+                    </Link>
                 ))}
+                
             </div>
+            
             </div>
         </div>
         </div>
