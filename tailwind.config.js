@@ -12,7 +12,7 @@ export default {
         "root-200" : "#11998E",
 
         "black-text" : "#060709",
-        "gray-text" : "#060709"
+        "gray-text" : "#7B7B7B"
       },
     
     },
