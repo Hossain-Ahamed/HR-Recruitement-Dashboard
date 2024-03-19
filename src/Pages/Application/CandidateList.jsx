@@ -25,8 +25,8 @@ const CandidateList = ({ candidate }) => {
       <div className="bg-white px-6 py-2 mb-4 rounded-md">
         <div className="grid grid-cols-3 items-center">
           <div className="flex">
-            <div class="w-12 h-12 rounded-full overflow-hidden">
-              <img class="w-full h-full object-cover" src={imgURL} alt="" />
+            <div className="w-12 h-12 rounded-full overflow-hidden">
+              <img className="w-full h-full object-cover" src={imgURL} alt="" />
             </div>
             <div className="grid pt-4 px-2">
               <p className="font-semibold text-sm">{name}</p>

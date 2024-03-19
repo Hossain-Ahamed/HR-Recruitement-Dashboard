@@ -7,6 +7,8 @@ import DropDown from '../../Components/DropDown';
 import CandidateList from './CandidateList';
 
 const Application = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [activeContent, setActiveContent] = useState('all');
     
     const axiosSecure = useAxiosSecure();
     const { refetch, data, isLoading, error } = useQuery({
@@ -18,27 +20,26 @@ const Application = () => {
         }
     })
 
-    const { refetchCandidate, data: candidate = [], isLoadingCandidate, errorCandidate } = useQuery({
-        queryKey: ['all-data-candidate'],
+    const { refetchCandidate, data: candidateData, isLoadingCandidate, errorCandidate } = useQuery({
+        queryKey: ['all-data-candidate',selectedOption,activeContent],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/get-candidates?role=65f71f368d2df6628388f946&status=all`);
-            console.log(res.data.result)
-            return res.data.result;
+            const res = await axiosSecure.get(`/get-candidates?role=${selectedOption?._id}&status=${activeContent}`);
+            console.log(res.data)
+            return res.data;
         }
     })
 
-    const [selectedOption, setSelectedOption] = useState(null);
   
   const handleSelect = (option) => {
     setSelectedOption(option);
   };
 
-    const [activeContent, setActiveContent] = useState('all');
 
   const handleContentSwitch = (contentId) => {
     setActiveContent(contentId);
   };
 
+  // const getCount = (all)
 
     if (isLoading) {
         return <LoadingPage />
@@ -54,6 +55,8 @@ const Application = () => {
         console.log(error)
         return <ErrorPage />
     }
+
+  
     return (
         <>
         <div className='bg-[#E0EDEA] p-6 py-10'>
@@ -112,7 +115,7 @@ const Application = () => {
           {activeContent === 'all' && (
             <div className=''>
               {
-                candidate?.map(candidate => <CandidateList key={candidate?._id} candidate={candidate} />
+                candidateData?.result && Array.isArray(candidateData?.result) &&  candidateData?.result.map(candidate => <CandidateList key={candidate?._id} candidate={candidate} />
                 )
               }
               
